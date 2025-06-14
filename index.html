@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketch. Shade. Shine.</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+    :root {
+      --background: #a8e2f3;
+      --accent: #192a41;
+      --text: #0d2e4b;
+      --highlight: #9ac9f3;
+      --dark-accent: #5a8cc5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--background);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: var(--accent);
+      color: #edf4f8;
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 120px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--dark-accent);
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      max-width: 750px;
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+
+    #home { background: linear-gradient(to right, var(--background), #e7eef6); }
+    #about { background: linear-gradient(to right, #cbdaf0, #dbedf7); }
+    #services { background: linear-gradient(to right, #dcf8fd, #bfd8e8); }
+    #schedule { background: linear-gradient(to right, #cbe0e9, var(--background)); }
+    #contact { background: linear-gradient(to right, #d1e2f3, var(--background)); }
+
+    .services-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+
+    .services-list li {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 12px 20px;
+      margin: 10px auto;
+      border-radius: 10px;
+      background-color: #9cd4eccc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .services-list li:hover {
+      transform: translateY(-4px);
+      background-color: #8eccf1;
+    }
+
+    .services-list .icon {
+      font-size: 1.6rem;
+      margin-right: 15px;
+      color: var(--accent);
+    }
+
+    .services-list .text {
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+.class-box {
+  background: linear-gradient(145deg, #82bfedb3, #d7f0ffcc);
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.class-box:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background-color: #136aa0;
+}
+
+.class-box h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #0a2540;
+  font-weight: 700;
+}
+
+.class-box p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.class-box span {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 500;
+}
+
+    .floating-cta {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: linear-gradient(135deg, #7399bd, #b3cff0);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .floating-cta:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: var(--text);
+      color: #ffffff;
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: var(--highlight);
+      margin: 0 10px;
+      font-size: 1.4rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 25px;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--background);
+        padding: 10px 0;
+        border-top: 1px solid #193d5d;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul li {
+        padding: 10px 20px;
+        width: 100%;
+      }
+
+      nav ul li a {
+        width: 100%;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">Sketch. Shade. Shine.</div>
+  <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+  <ul id="nav-links">
+    <li><a href="#home"><strong>Home</strong></a></li>
+    <li><a href="#about"><strong>About</strong></a></li>
+    <li><a href="#services"><strong>Services</strong></a></li>
+    <li><a href="#schedule"><strong>Schedule</strong></a></li>
+    <li><a href="#contact"><strong>Contact</strong></a></li>
+  </ul>
+</nav>
+
+<section id="home" data-aos="fade-up" style="background: linear-gradient(135deg, #99c4e3, #ffffff); padding: 140px 30px 100px; text-align: center;">
+  <h1 style="
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #173c6d;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  ">
+    Welcome to <span style="color: #527fb3;">Sketch. Shade. Shine. 🎨✨</span>
+  </h1>
+
+  <p style="
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #0f253b;
+    line-height: 1.9;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+  ">
+    Where creativity takes root and every brushstroke becomes part of your story.  
+    <br><br>
+    <strong>Sketch. Shade. Shine.</strong> isn’t just a class—it’s your creative sanctuary. Whether you're doodling your first design or polishing your next masterpiece, this is a safe, vibrant space to grow, express, and thrive. 🌱🎨  
+    <br><br>
+    No pressure. No perfection. Just passion.  
+    <br>
+    Let’s sketch dreams, shade emotions, and shine through art—together. 🌈🖌
+  </p>
+</section>
+
+<section id="about" data-aos="fade-right" style="
+  background: #cfe9f6;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+">
+  <h2 style="
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin: 40px auto;
+    letter-spacing: 1px;
+    color: #136aa0;
+  ">🎯 Just Me, Creating a World for Us</h2>
+
+  <p style="
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    color: #2f3e54;
+    max-width: 850px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+  ">
+    <strong>Hey there! 👋</strong><br>
+    I’m <span style="color:#1e64a2;">Samruddhi Pawar</span>, with an art enthusiastic and creative heart and hands behind <strong>Sketch. Shade. Shine.</strong> — just one dreamer with a pencil, a passion for creativity, and a deep love for community.
+    <br>
+    This space? It’s not about being perfect. It’s about expression, healing, fun, and growth — one sketch, one shade, one bold splash of color at a time. 🎨💖
+    <br>
+    Whether you’ve never drawn a line or you’ve filled notebooks with ideas, you belong here.<br>
+    I’ll be right by your side — guiding, supporting, and cheering you on as we turn creativity into confidence, together. 🌈✨
+  </p>
+
+  <h3 style="
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2f3e54;
+    margin-bottom: 60px;
+  ">
+    Let’s <span style="color:#275dc0;">grow</span>, <span style="color:#e06fbb;">create</span>, and <span style="color:#f79e1b;">shine</span> — together.
+  </h3>
+</section>
+
+
+<section id="services" data-aos="fade-left">
+  <h2><strong>Our Services</strong>👩🏻‍🎨</h2>
+  <ul class="services-list">
+    <li><span class="icon">✏</span><span class="text"><strong>Pencil Sketching & Shading</strong></span></li>
+    <li><span class="icon">🎨</span><span class="text"><strong>Watercolor & Acrylic Workshops</strong></span></li>
+    <li><span class="icon">🏵</span><span class="text"><strong>Mandala & Zentangle Sessions</strong></span></li>
+    <li><span class="icon">💻</span><span class="text"><strong>Digital Illustration (Beginner to Advanced)</strong></span></li>
+    <li><span class="icon">🧠</span><span class="text"><strong>Therapeutic Art Journaling</strong></span></li>
+  </ul>
+</section>
+
+<section id="schedule" data-aos="fade-center">
+  <h2>Class Schedule & Timings</h2>
+  <div class="schedule-grid">
+  <div class="class-box">
+    <h3>🎨 Monday</h3>
+    <p>Intro to Sketching</p>
+    <span>4:00 – 5:30 PM</span>
+  </div>
+  <div class="class-box">
+    <h3>🖌 Tuesday</h3>
+    <p>Watercolor Art</p>
+    <span>5:00 – 6:30 PM</span>
+  </div>
+  <div class="class-box">
+    <h3>🌀 Wednesday</h3>
+    <p>Mandala Therapy</p>
+    <span>4:00 – 5:30 PM</span>
+  </div>
+  <div class="class-box">
+    <h3>✏ Thursday</h3>
+    <p>Advanced Pencil Art</p>
+    <span>6:00 – 7:30 PM</span>
+  </div>
+  <div class="class-box">
+    <h3>💻 Friday</h3>
+    <p>Digital Art Lab</p>
+    <span>5:30 – 7:00 PM</span>
+  </div>
+  <div class="class-box">
+    <h3>🎉 Saturday</h3>
+    <p>Weekend Art Jam</p>
+    <span>3:00 – 5:00 PM</span>
+  </div>
+</div>
+
+
+</section>
+
+<section id="contact" data-aos="fade-center">
+  <h2>Let's Connect 📞✉</h2>
+  <p>Whether you’ve got questions, ideas, or you're just excited to start your creative journey — we’d love to hear from you! 💌</p>
+  <div style="max-width: 1000px; margin: 40px auto 0; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: flex-start;">
+    
+    <!-- Contact Info -->
+    <div style="flex: 1 1 300px; font-size: 1rem; color: #1f1f1f;">
+      <p style="margin: 15px 0;"><i class="fas fa-phone-alt" style="margin-right: 12px; color: #0077b6;"></i><strong>Phone:</strong> 9309713440</p>
+      <p style="margin: 15px 0;"><i class="fas fa-envelope" style="margin-right: 12px; color: #0077b6;"></i><strong>Email:</strong> samruddhipawar7171@gmail.com</p>
+      <p style="margin: 15px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 12px; color: #0077b6;"></i><strong>Location:</strong> Pune, Maharashtra</p>
+    </div>
+
+    <!-- Contact Form -->
+    <form id="contactForm" style="flex: 1 1 300px; background: #71aabdcc; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+      <input type="text" placeholder="👤 Your Name" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 8px; background: #dfe8f2;" />
+      <input type="email" placeholder="✉ Your Email" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 8px; background: #dfe8f2;" />
+      <textarea rows="4" placeholder="💬 Your Message" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 8px; background: #dfe8f2;"></textarea>
+
+   <!-- Button Container -->
+   <div style="display: flex; gap: 10px;">
+     <button type="submit" style="flex: 1; padding: 12px 20px; background: #5482a5; color: rgb(221, 234, 254); border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+      Send Message ⏩
+     </button>
+     <button type="button" onclick="document.getElementById('contactForm').reset()" style="flex: 1; padding: 12px 20px; background: #5482a5; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+     🔄 Clear
+    </button>
+   </div>
+   </form>
+
+   </div>
+</section>
+
+<a href="#contact" class="floating-cta">Join a Class</a>
+
+<footer>
+  <p>© 2025 Sketch. Shade. Shine. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    menuToggle.querySelector('i').classList.toggle('fa-bars');
+    menuToggle.querySelector('i').classList.toggle('fa-times');
+  });
+</script>
+</body>
+</html>
